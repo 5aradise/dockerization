@@ -2,12 +2,14 @@ FROM python:3.13.3-bullseye
 
 WORKDIR /app
 
-COPY . .
-
 RUN python -m venv ./.venv
+
+COPY requirements.txt .
 
 RUN . ./.venv/bin/activate && \
     pip install -r requirements.txt
+
+COPY . .
 
 EXPOSE 8080
 
