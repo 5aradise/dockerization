@@ -10,7 +10,7 @@ RUN go mod download && \
 RUN mkdir build && \
     go build -o build/fizzbuzz
 
-FROM scratch
+FROM gcr.io/distroless/base
 
 COPY --from=builder /app/build/fizzbuzz .
 COPY --from=builder /app/templates/index.html templates/
